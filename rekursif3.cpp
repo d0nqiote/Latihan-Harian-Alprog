@@ -1,5 +1,6 @@
 /*
 Nama program    :Pengimplementasian rumus f(n) = 2f(n-1) + 4, untuk n > 0
+Nama            :Farah Nadia Aqila
 NPM             :140810250049
 Tanggal dibuat  :30 September 2025
 Waktu awal      :15:42
