@@ -17,7 +17,7 @@ int fibonacci(int n){ //bilangan fibonnaci
 }
 
 int penulisan(int n){
-    if(n == 0) return 0;
+    if(n <= 0) return 0;
 
     penulisan(n - 1);
     int hasil = fibonacci(n);
