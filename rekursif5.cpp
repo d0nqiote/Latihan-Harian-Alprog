@@ -2,9 +2,9 @@
 Nama program    :Menghitung uang
 Nama            :Farah Nadia Aqila
 NPM             :140810250049
-Tanggal dibuat  :30 September 2025
-Waktu awal      :16:
-Waktu akhir     :16:
+Tanggal dibuat  :1 Oktober 2025
+Waktu awal      :07:21
+Waktu akhir     :08:03
 Deskripsi       :Misalkan uang sebanyak Rp10.000 disimpan di bank dengan sistem bunga berbunga dengan besar bunga 11% per tahun. Berapa banyak uang setelah 30 tahun?
 */
 
