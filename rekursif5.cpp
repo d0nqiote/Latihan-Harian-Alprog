@@ -11,14 +11,6 @@ Deskripsi       :Misalkan uang sebanyak Rp10.000 disimpan di bank dengan sistem 
 #include <iostream>
 using namespace std;
 
-int pangkat(int basis, int pangkat){
-    int hasil = 1;
-    for(int i = 1; i <= pangkat; i++){
-        hasil = hasil * basis;
-    }   
-    return hasil;
-}
-
 float uang(float n){
     if(n == 0) return 10000;
     float hasil = uang(n - 1) + 0.11 * uang (n - 1);
