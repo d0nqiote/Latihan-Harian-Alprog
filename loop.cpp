@@ -21,13 +21,27 @@ void pangkat(int basis, int kali){ //awal pengerjaan : 07:05, akhir pengerjaan :
 void faktorial(int n){ //awal pengerjaan :07:21, akhir pengerjaan : 07:31
     int hasil = 1;
     cin >> n;
-    for(int i = 1; i < n; i++){
+    for(int i = 0; i < n; i++){
         hasil += hasil * i;
     }
     cout << hasil;
 }
 
+void bintangKaki(int n){ //awal pengerjaan 07:34, akhir pengerjaan :
+    cin >> n;
+    for(int i = 1; i <= n; i++){ //baris
+        for(int h = 1; h <= n; h++){ 
+            for(int j = 1; j <= n - i; j++) cout << " ";
+            for(int j = 1; j <= 2 * i - 1; j++) cout << "*";
+            for(int k = 1; k <= n - i; k++) cout << " ";
+            cout << " ";
+        }
+        cout << endl;
+    }
+}
+
+
 int main(){
-    int n, m;
-    faktorial(n);
+    int n;
+    bintangKaki(n);
 }
