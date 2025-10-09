@@ -16,23 +16,26 @@ string.
 #include <iostream>
 using namespace std;
 
-int main(){
-    string kata;
+void palindromHuruf(string kata){
     cin >> kata;
     int n = kata.length();
     int hasil = 0;
 
     for(int i = 0; i < kata.length(); i++){
-        hasil++;
-        if(kata[i] != kata[n - i - 1]){
+        if(kata[i] == kata[n - i - 1]){
+            hasil++;
+        } else{
             break;
         }
     }
-
-    if(hasil == n){
-        cout << "Palindrom";
-    } else {
-        cout << "Bukan Palindrom";
+    if(hasil == kata.length()){
+        cout << kata << " adalah palindrom";
+    } else{
+        cout << kata << " bukan palindrom";
     }
+}
 
+int main(){
+    string kata;
+    palindromHuruf(kata);
 }
