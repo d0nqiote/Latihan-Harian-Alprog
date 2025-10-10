@@ -1,12 +1,13 @@
 /*
-Nama Program     :Two Sum
+Nama Program     :Remove Element
 Nama             :Farah Nadia Aqila
 NPM              :140810250049
 Tanggal Dibuat   :10 Oktober 2025
-Waktu Awal       :23:00
-Waktu Selesai    :
-Deskripsi        :Diberikan sebuah larik (array) integer `nums` dan sebuah integer `target`, kembalikan **indeks dari dua angka** yang jika dijumlahkan akan menghasilkan `target`.
-Asumsikan bahwa setiap input akan memiliki **tepat satu solusi**, dan Anda tidak boleh menggunakan elemen yang sama dua kali.
+Waktu Awal       :23:45
+Waktu Selesai    :00:14 (11 Oktober 2025)
+Deskripsi        :Diberikan sebuah larik integer `nums` dan sebuah integer `val`, hapus semua kemunculan `val` dari `nums` secara **in-place** (tanpa membuat array baru). Urutan elemen yang tersisa tidaklah penting.
+
+Kembalikan `k`, yaitu jumlah elemen yang tersisa setelah penghapusan.
 */
 
 #include <iostream>
@@ -15,7 +16,7 @@ using namespace std;
 typedef int array[100];
 
 void inputNilai(int &n, string tipe){
-    cout << "Besar " << tipe << " : ";
+    cout << tipe << " : ";
     cin >> n;
 }
 
@@ -25,23 +26,40 @@ void inputArray(array nilai, int n){
     }
 }
 
-void cariTarget(array nilai, int n, int target){
-    for(int i = 0; i < n - 1; i++){
-        for(int j = i + 1; j < n; j++){
-            if(nilai[i] + nilai[j] == target){
-                cout << "[" << nilai[i] << ", " << nilai[j] << "]";
-            }
-        }
-    }
-}
+
+void hapus(array nilai, int n, int hapus){}
 
 int main(){
-    int n, target;
-    inputNilai(n, "array");
+    int n, hapus;
+    inputNilai(n, "Data");
+    inputNilai(hapus, "Hapus");
     
     array nilai;
     inputArray(nilai, n);
 
-    inputNilai(target, "target");
-    cariTarget(nilai, n, target);
+    int hasil = n;
+    for(int i = 0; i < hasil;){
+        if(nilai[i] == hapus){
+            for(int j = i; j < hasil - 1; j++){
+                nilai[j] = nilai[j+1];
+            }
+             hasil--;
+        } else {
+            i++;
+        }
+    }
+
+    cout << hasil << endl;
+    cout << "[";
+    for(int i = 0; i < n; i++){
+        if(nilai[i] != hapus){
+            cout << nilai[i];
+        } else {
+            cout << "_";
+        }
+        if(i != n - 1){
+            cout << ", ";
+        }
+    }
+    cout << "]";
 }
