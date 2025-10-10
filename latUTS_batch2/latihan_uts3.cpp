@@ -3,8 +3,8 @@ Nama Program     :Surat Cinta (Caesar Cipher)
 Nama             :Farah Nadia Aqila
 NPM              :140810250049
 Tanggal Dibuat   :10 Oktober 2025
-Waktu Awal       :14:00
-Waktu Selesai    :
+Waktu Awal       :14:10
+Waktu Selesai    :14:32
 Deskripsi        :Program untuk mengenkripsi teks menggunakan metode **Caesar Cipher**.  
 Setiap huruf akan digeser sejauh `n` huruf berikutnya di tabel ASCII.
 */
