@@ -4,7 +4,7 @@ Nama             :Farah Nadia Aqila
 NPM              :140810250049
 Tanggal Dibuat   :10 Oktober 2025
 Waktu Awal       :23:00
-Waktu Selesai    :23:41
+Waktu Selesai    :
 Deskripsi        :Diberikan sebuah larik (array) integer `nums` dan sebuah integer `target`, kembalikan **indeks dari dua angka** yang jika dijumlahkan akan menghasilkan `target`.
 Asumsikan bahwa setiap input akan memiliki **tepat satu solusi**, dan Anda tidak boleh menggunakan elemen yang sama dua kali.
 */
