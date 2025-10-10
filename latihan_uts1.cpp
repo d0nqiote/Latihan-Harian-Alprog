@@ -4,7 +4,7 @@ Nama             :Farah Nadia Aqila
 NPM              :140810250049
 Tanggal Dibuat   :9 Oktober 2025
 Waktu Awal       :11:02
-Waktu Selesai    :11:12
+Waktu Selesai    :11:120
 Deskripsi        :Program untuk menggerakkan karakter “Steve” pada bidang koordinat 2D berdasarkan input arah (`U`, `D`, `L`, `R`).
 */
 
@@ -26,16 +26,18 @@ int main(){
         cin >> arah[i];
     }
 
-    for(int i = 0; i < 4; i++){
-        if(arah[i] == 'U'){
+    for(int i = 0; i < n; i++){
+        char langkah = arah[i % 4];
+
+        if(langkah == 'U'){
             y += 1; 
-        } else if(arah[i] == 'D'){
+        } else if(langkah == 'D'){
             y -= 1;
         }
-        else if(arah[i] == 'R'){
+        else if(langkah == 'R'){
             x += 1;
         }
-        else if(arah[i] == 'L'){
+        else if(langkah == 'L'){
             x -= 1;
         }
     } 
