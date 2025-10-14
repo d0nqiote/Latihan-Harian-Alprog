@@ -1,68 +1,84 @@
-/*
-Nama Program     :Latihan Uts Praktikum
-Nama             :Farah Nadia Aqila
-NPM              :140810250049
-Tanggal Dibuat   :11=3 Oktober 2025
-Waktu Awal       :17:20
-Waktu Selesai    :
-*/
-
 #include <iostream>
 using namespace std;
 
-void posisi (int &n, char posisi);
-void langkah(int &n);
-void arah(char a[]);
-void pindah(int &x, int &y, int n, char a[]);
-void posisiAkhir(int n, char posisi);
+typedef int data[100];
+
+void banyakData(int &n);
+void target(int &a);
+void array(data nilai, int n);
+void jumlah(data nilai, int n, int target);
+void hapus(data nilai, int n, int target);
+void pindah(int &a, int &b);
 
 int main(){
-    int x, y, n;
-    posisi(x, 'x');
-    posisi(y, 'y');
-    langkah(n);
+    int n, a;
+    data nilai;
 
-    char a[4];
-    arah(a);
+    banyakData(n);
+    array(nilai, n);
+    target(a);
+    hapus(nilai, n, a);
 
-    pindah(x, y, n, a);
-    posisiAkhir(x, 'x');
-    posisiAkhir(y, 'y');
 }
 
-void posisi (int &n, char posisi){
-    cout << "Masukkan posisi Steve di " << posisi << " : ";
+void banyakData(int &n){
+    cout << "Masukkan banyak data untuk array : ";
     cin >> n;
 }
 
-void langkah(int &n){
-    cout << "Berapa banyak Steve melangkah? ";
-    cin >> n;
+void target(int &a){
+    cout << "Masukkan nilai target : ";
+    cin >> a;
 }
 
-void arah(char a[]){
-    cout << "Arah Steve Melangkah : \n1. U(Up) \n2.D(Down) \n3.R(Right) \n4.L(Left)" << endl;
-    for(int i = 0; i < 4; i++){ 
-        cin >> a[i];
+void array(data nilai, int n){
+    cout << "Masukkan nilai ke dalam array : ";
+    for(int i = 0; i < n; i++){
+        cin >> nilai[i];
     }
 }
 
-
-void pindah(int &x, int &y, int n, char a[]){
+void jumlah(data nilai, int n, int target){
     for(int i = 0; i < n; i++){
-        char langkah = a[i % 4];
-        if(langkah == 'U'){
-            y += 1;
-        } else if(langkah == 'D'){
-            y -= 1;
-        } else if(langkah == 'R'){
-            x += 1;
-        } else if (langkah == 'L'){
-            x -= 1;
+        for(int j = 0; j < i; j++){
+            if(nilai[j] + nilai[i] == target){
+                cout << "[" << j << ", " << i << "]";
+                break;
+            }
         }
     }
 }
 
-void posisiAkhir(int n, char posisi){
-    cout << "Posisi akhir Steve di " << posisi << " : " << n << endl;
+void pindah(int &a, int &b){
+    int hasil = a;
+    a = b;
+    b = hasil;
+}
+
+void hapus(data nilai, int n, int target){
+    int hasil = n;
+    for(int i = 0; i < hasil;){
+        if(nilai[i] == target){
+            for(int j = i; j < hasil - 1; j++){
+                nilai[j] = nilai[j+1];
+            } 
+            hasil--;
+        } else {
+            i++;
+        }
+    }
+    
+    cout << hasil << endl;
+    cout << "[";
+    for(int i = 0; i < n; i++){
+        if(i < hasil){
+            cout << nilai[i];
+        } else {
+            cout << "_";
+        }
+        if(i != hasil - 1){
+            cout << ", ";
+        }
+    }
+    cout << "]";
 }
