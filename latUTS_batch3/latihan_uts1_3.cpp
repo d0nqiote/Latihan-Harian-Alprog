@@ -26,10 +26,11 @@ void inputArray(array nilai, int n){
 }
 
 void cariTarget(array nilai, int n, int target){
-    for(int i = 0; i < n - 1; i++){
-        for(int j = i + 1; j < n; j++){
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < i; j++){
             if(nilai[i] + nilai[j] == target){
-                cout << "[" << nilai[i] << ", " << nilai[j] << "]";
+                cout << "[" << nilai[j] << ", " << nilai[i] << "]";
+                return;
             }
         }
     }
