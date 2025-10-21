@@ -2,7 +2,7 @@
 Nama Program    :Selection sorting ascending
 Nama            :Farah Nadia Aqila
 Npm             :140810250049
-Tanggal         :16 Oktober 2025
+Tanggal         :21 Oktober 2025
 Waktu Awal      :10:24
 Waktu Akhir     :10:56
 */
