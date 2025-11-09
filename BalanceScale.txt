@@ -1,0 +1,11 @@
+Jumlah pemain : 5
+Nama Pemain              Nilai
+------------------------------------
+luke                        34
+farah                       22
+ligar                       13
+razan                       11
+nola                         6
+------------------------------------
+Nilai Balance Scale      : 13.76
+Pemain yang tereliminasi : luke
