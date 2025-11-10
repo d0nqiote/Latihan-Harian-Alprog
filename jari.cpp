@@ -50,6 +50,10 @@ void eliminasi(struct data pemain[]) {
         cout << "Memakai tangan yang mana? (L/R)" << endl;
         cin >> sendiri;
 
+        lawan = toupper(lawan);
+        sendiri = toupper(sendiri);
+
+
         int serang = giliran;
         int target = 1 - giliran;
 
@@ -71,6 +75,11 @@ void eliminasi(struct data pemain[]) {
             pemain[target].kanan = (pemain[target].kanan + jariSendiri) % 5;
         }
 
+        if ((lawan == 'L' && pemain[target].kiri == 0) || (lawan == 'R' && pemain[target].kanan == 0)) {
+        cout << "Tangan lawan sudah mati, pilih tangan lain!" << endl;
+        continue;
+        }
+        
         cout << "Mau SPLIT / COMBINE / NEXT? " << endl;
         cin >> pilihan;
         if(pilihan == "SPLIT"){
