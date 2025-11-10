@@ -19,6 +19,7 @@ using namespace std;
 struct data{
     string nama;
     int nilai;
+    float gap;
 };
 
 
@@ -41,24 +42,31 @@ void swap(int &a, int &b){
     b = temp;
 }
 
-void sorting(data pemain[], int n){
-    for(int i = 1; i < n; i++){
-        for(int j = i; j >= 1; j--){
-            if(pemain[j].nilai > pemain[j-1].nilai){
-                swap(pemain[j], pemain[j-1]);
-            } else {
-                break;
-            }
-        }
-    }
-}
-
 float balanceScale(data pemain[], int n){
     int hasil = 0;
     for(int i = 0; i < n; i++){
         hasil += pemain[i].nilai;
     }
     return hasil /(float)n * 0.8;
+}
+
+void jarak(data pemain[], int n){
+    float mean = balanceScale(pemain, n);
+    for(int i = 0; i < n; i++){
+        pemain[i].gap = pemain[i].nilai - mean;
+    }
+}
+
+void sorting(data pemain[], int n){
+    for(int i = 1; i < n; i++){
+        for(int j = i; j >= 1; j--){
+            if(pemain[j].gap > pemain[j-1].gap){
+                swap(pemain[j], pemain[j-1]);
+            } else {
+                break;
+            }
+        }
+    }
 }
 
 string eliminasi(data pemain[], int n){
@@ -84,6 +92,18 @@ string eliminasi(data pemain[], int n){
     return tereliminasi;
 }
 
+void outputData(ofstream &file, data pemain[], int n){
+    file << left << setw(20) << "Nama Pemain" 
+         << right << setw(10) << "Nilai" << endl;
+    file << "------------------------------------" << endl;
+    
+    for (int i = 0; i < n; i++) {
+        file << left << setw(20) << pemain[i].nama
+             << right << setw(10) << pemain[i].nilai << endl;
+    }
+    file << "------------------------------------" << endl;
+}
+
 int main(){
     ofstream file("BalanceScale.txt");
     int n;
@@ -92,15 +112,9 @@ int main(){
 
     data pemain[n];
     inputAngka(pemain, n);
+    jarak(pemain, n);
     sorting(pemain, n);
-    file << left << setw(20) << "Nama Pemain" 
-         << right << setw(10) << "Nilai" << endl;
-    file << "------------------------------------" << endl;
-    for (int i = 0; i < n; i++) {
-        file << left << setw(20) << pemain[i].nama
-             << right << setw(10) << pemain[i].nilai << endl;
-    }
-    file << "------------------------------------" << endl;
+    outputData(file, pemain, n);
 
     file << "Nilai Balance Scale      : " << fixed << setprecision(2) << balanceScale(pemain, n) << endl;
     file << "Pemain yang tereliminasi : " << eliminasi(pemain, n) << endl;

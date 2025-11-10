@@ -116,6 +116,6 @@ int main(){
     if(answer == word){
         cout << "YOU ARE THE REAL WINNER!!" << endl;
     } else {
-        cout << "You sucks, the word was : " << word << endl;
+        cout << "Cupu. The word was : " << word << endl;
     }
 }
