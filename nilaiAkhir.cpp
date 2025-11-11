@@ -4,7 +4,7 @@ Nama             :Farah Nadia Aqila
 NPM              :140810250049
 Tanggal Dibuat   :11 November 2025
 Waktu Awal       :20:09
-Waktu Selesai    :
+Waktu Selesai    :20:42
 Deskripsi        :Buatlah program untuk menghitung nilai akhir mahasiswa yang diberikan pada file dengan metode weighted average. Jumlah nilai yang akan dihitung sebanyak 5.
 */
 
