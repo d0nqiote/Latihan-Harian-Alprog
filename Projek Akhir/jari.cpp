@@ -53,7 +53,6 @@ void eliminasi(struct data pemain[]) {
         lawan = toupper(lawan);
         sendiri = toupper(sendiri);
 
-
         int serang = giliran;
         int target = 1 - giliran;
 
@@ -79,7 +78,7 @@ void eliminasi(struct data pemain[]) {
         cout << "Tangan lawan sudah mati, pilih tangan lain!" << endl;
         continue;
         }
-        
+
         cout << "Mau SPLIT / COMBINE / NEXT? " << endl;
         cin >> pilihan;
         if(pilihan == "SPLIT"){
