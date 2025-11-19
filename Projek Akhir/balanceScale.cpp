@@ -36,8 +36,8 @@ void inputAngka(data pemain[], int n){
     }
 }
 
-void swap(int &a, int &b){
-    int temp = a; 
+void swap(data &a, data &b){
+    data temp = a; 
     a = b; 
     b = temp;
 }
@@ -53,7 +53,13 @@ float balanceScale(data pemain[], int n){
 void jarak(data pemain[], int n){
     float mean = balanceScale(pemain, n);
     for(int i = 0; i < n; i++){
-        pemain[i].gap = pemain[i].nilai - mean;
+        float gapSementara = pemain[i].nilai - mean;
+
+        if(gapSementara < 0){
+            pemain[i].gap = gapSementara * -1;
+        } else {
+            pemain[i].gap = gapSementara;
+        }
     }
 }
 
