@@ -2,9 +2,9 @@
 Nama program    :Russian Roulette
 Nama            :Farah Nadia Aqila
 Npm             :140810250049
-Tanggal         :18 November 2025
-Waktu awal      :11:13
-Waktu akhir     : 
+Tanggal         :18 November 2025 - 
+Waktu awal      :11:13 (18 November 2025)
+Waktu akhir     :17:33 (20 November 2025)
 Deskripsi       :Playernya berdua
 */
 
@@ -13,43 +13,47 @@ Deskripsi       :Playernya berdua
 #include <ctime>
 using namespace std;
 
-
+bool allZero(int data[]){
+    for(int i = 0; i < 15; i++){
+        if(data[i] != 0){
+            return false;
+        }
+    }
+    return true;
+}
 
 int main(){
     srand(time(0));
-    int index = rand() % 6;
-    cout << index + 1 << endl;
-
-    int data[6] = {0, 0, 0, 0, 0, 0};
+    int index = rand() % 15;
+    int data[15] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     data[index] = 1;
-    for(int i = 0; i < 6; i++){
-        cout << data[i] << " ";
-    }
-    cout << endl;
 
-    do{
-        int i = 1;
+    int k = 3;
+    while(!allZero(data)){
+        int player = k % 3 + 1;
         int n;
-        cout << "Player ke-" << i << " ingin menembak berapa kali? ";
+        cout << "Player ke-" << player << " ingin menembak berapa kali? ";
         cin >> n;
-        
-        if(index - n >= 0){
-            for(int i = 0; i < n; i++){
-                for(int j = 0; j < 5; j++){
-                    data[j] = data[j+1];
-                }
+        k++;
+
+        bool safe = true;
+        for(int i = 0; i < n; i++){
+            cout << "DOR" << endl;
+
+            if(data[0] == 1){
+                safe = false;
+                break;
             }
-        } else if (data == 0) {
-            cout << "ANDA TERELIMINASI";
-            break;
-        } else {
-            cout << "ANDA TERELIMINASI";
+
+            for(int j = 0; j < 14; j++){
+                data[j] = data[j+1];
+            }
+            data[14] = 0;
+        }
+
+        if(!safe){
+            cout << "YOU ARE LOSE";
             break;
         }
-        
-        for(int i = 0; i < 6; i++){
-            cout << data[i] << " ";
-        }
-        cout << endl;
-    } while(data != 0);
+    }
 }

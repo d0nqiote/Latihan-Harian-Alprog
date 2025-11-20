@@ -97,72 +97,72 @@ int main(){
             live--;
             cout << "Wrong guess! Lives left: " << live << endl;
 
-        switch (live) {
-            case 5:
-                cout << answer << endl;
-                cout << "-------------" << endl;
-                for (int i = 0; i < 7; i++) {
-                    cout << "|" << endl;
-                }
-                break;
-
-            case 4:
-                cout << answer << endl;
-                cout << "-------------" << endl;
-                for (int i = 0; i < 7; i++) {
-                    if (i < 2)
-                        cout << "|           |" << endl;
-                    else
+            switch (live) {
+                case 5:
+                    cout << answer << endl;
+                    cout << "-------------" << endl;
+                    for (int i = 0; i < 7; i++) {
                         cout << "|" << endl;
-                }
-                break;
+                    }
+                    break;
 
-            case 3:
-                cout << answer << endl;
-                cout << h1 << endl;
-                cout << "-------------" << endl;
-                cout << "|           |" << endl;
-                cout << "|           |" << endl;
-                cout << "|           O" << endl;
-                for (int i = 0; i < 5; i++)
+                case 4:
+                    cout << answer << endl;
+                    cout << "-------------" << endl;
+                    for (int i = 0; i < 7; i++) {
+                        if (i < 2)
+                            cout << "|           |" << endl;
+                        else
+                            cout << "|" << endl;
+                    }
+                    break;
+
+                case 3:
+                    cout << answer << endl;
+                    cout << h1 << endl;
+                    cout << "-------------" << endl;
+                    cout << "|           |" << endl;
+                    cout << "|           |" << endl;
+                    cout << "|           O" << endl;
+                    for (int i = 0; i < 5; i++)
+                        cout << "|" << endl;
+                    break;
+
+                case 2:
+                    cout << answer << endl;
+                    cout << h2 << endl;
+                    cout << "-------------" << endl;
+                    cout << "|           |" << endl;
+                    cout << "|           |" << endl;
+                    cout << "|           O" << endl;
+                    cout << "|           |" << endl;
+                    for (int i = 0; i < 3; i++)
+                        cout << "|" << endl;
+                    break;
+
+                case 1:
+                    cout << answer << endl;
+                    cout << h3 << endl;
+                    cout << "-------------" << endl;
+                    cout << "|           |" << endl;
+                    cout << "|           |" << endl;
+                    cout << "|           O" << endl;
+                    cout << "|          /|\\" << endl;
+                    for (int i = 0; i < 3; i++)
+                        cout << "|" << endl;
+                    break;
+
+                case 0:
+                    cout << answer << endl;
+                    cout << "-------------" << endl;
+                    cout << "|           |" << endl;
+                    cout << "|           |" << endl;
+                    cout << "|           O" << endl;
+                    cout << "|          /|\\" << endl;
+                    cout << "|          / \\" << endl;
                     cout << "|" << endl;
-                break;
-
-            case 2:
-                cout << answer << endl;
-                cout << h2 << endl;
-                cout << "-------------" << endl;
-                cout << "|           |" << endl;
-                cout << "|           |" << endl;
-                cout << "|           O" << endl;
-                cout << "|           |" << endl;
-                for (int i = 0; i < 3; i++)
-                    cout << "|" << endl;
-                break;
-
-            case 1:
-                cout << answer << endl;
-                cout << h3 << endl;
-                cout << "-------------" << endl;
-                cout << "|           |" << endl;
-                cout << "|           |" << endl;
-                cout << "|           O" << endl;
-                cout << "|          /|\\" << endl;
-                for (int i = 0; i < 3; i++)
-                    cout << "|" << endl;
-                break;
-
-            case 0:
-                cout << answer << endl;
-                cout << "-------------" << endl;
-                cout << "|           |" << endl;
-                cout << "|           |" << endl;
-                cout << "|           O" << endl;
-                cout << "|          /|\\" << endl;
-                cout << "|          / \\" << endl;
-                cout << "|" << endl;
-                cout << "GAME OVER!" << endl;
-                break;
+                    cout << "GAME OVER!" << endl;
+                    break;
         }
 
         } else{
