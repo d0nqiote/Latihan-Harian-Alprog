@@ -24,13 +24,13 @@ bool allZero(int data[]){
 
 int main(){
     srand(time(0));
-    int index = rand() % 15;
-    int data[15] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    int index = rand() % 30;
+    int data[30] = {0};
     data[index] = 1;
 
     int k = 3;
     while(!allZero(data)){
-        int player = k % 3 + 1;
+        int player = k % 5 + 1;
         int n;
         cout << "Player ke-" << player << " ingin menembak berapa kali? ";
         cin >> n;
@@ -45,10 +45,10 @@ int main(){
                 break;
             }
 
-            for(int j = 0; j < 14; j++){
+            for(int j = 0; j < 29; j++){
                 data[j] = data[j+1];
             }
-            data[14] = 0;
+            data[29] = 0;
         }
 
         if(!safe){
