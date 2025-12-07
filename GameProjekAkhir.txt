@@ -1,0 +1,38 @@
+=== HASIL PERMAINAN BALANCE SCALE ===
+
+Nama Pemain              Nilai      |     Nama Pemain              Poin      
+==========================================================================
+ANDIN                    45         |     ERI                      20        
+BIEI                     37         |     DERIS                    15        
+CYHINTIA                 9          |     CYHINTIA                 10        
+DERIS                    33         |     BIEI                     5         
+ERI                      12         |     ANDIN                    0         
+==========================================================================
+Nilai Balance Scale : 21.76
+
+
+
+=== HASIL PERMAINAN RUSSIAN ROULETTE ===
+
+ANDIN kalah dan kehilangan 10 poin!
+
+Nama Pemain              Poin      
+===================================
+ERI                      20        
+DERIS                    15        
+CYHINTIA                 10        
+BIEI                     5         
+ANDIN                    -10       
+===================================
+
+
+=== HASIL PERMAINAN HANG WORD ===
+
+Nama Pemain              Poin      
+===================================
+ERI                      20        
+DERIS                    15        
+CYHINTIA                 10        
+BIEI                     5         
+ANDIN                    -10       
+===================================
