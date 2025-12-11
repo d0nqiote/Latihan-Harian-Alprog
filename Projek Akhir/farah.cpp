@@ -13,9 +13,12 @@ Deskripsi       :Projek Akhir Praktikum Algoritma Pemrograman Semester 1
 #include <fstream>
 #include <cstdlib>
 #include <ctime>
+#include <thread>
+#include <chrono>
+#include <cctype>
 using namespace std;
 
-const int jumlahPemain = 5;
+const int jumlahPemain = 3;
 struct balanceScale{
     int nilai;
     float gap;
@@ -29,6 +32,7 @@ void displayAkhirGame();
 void swap(balanceScale &a, balanceScale &b);
 void swap(game &a, game &b);
 void sortByPoin(game projekAkhir[]);
+void delay(double detik);
 void clearTerminal();
 
 //balance scale
@@ -52,7 +56,7 @@ int indeksHangWord();
 string masukkanJawabanHangWord(int indeks);
 void masukkanHintHangWord(int indeks, string &hint1, string &hint2, string &hint3);
 void gambarHangWord(int nyawa, string hint1, string hint2, string hint3, string jawabanPemain);
-char inputTebakanHangWord(int pemain, game projekAkhir[]);
+char inputTebakanHangWord(int pemain, game urutanAwal[]);
 bool cekJawabanHangWord(char tebakanPemain, string &jawabanPemain, string jawabanHangWord);
 void hurufYangSudaDitebak(char tebakanPemain, int banyakTebakan, char hurufDitebak[]);
 bool cekTebakanPemainHangWord(char tebakanPemain, int banyakTebakan, char hurufDitebak[]);
@@ -104,11 +108,18 @@ void sortByPoin(game projekAkhir[]){
         }
     }
 }
-void clearTerminal(){
+void delay(double detik){
+    this_thread::sleep_for(chrono::milliseconds(int(detik*1000)));
+}
+void clearTerminal(int detik=0){
+    if(detik > 0){
+        delay(detik);
+    }
+    
     #ifdef _WIN32
         system("cls");
     #else
-        system("clear"); 
+        system("clear");
     #endif
 }
 
@@ -197,7 +208,7 @@ void outputBalanceScale(balanceScale pemain[], game projekAkhir[], game urutanAw
 void gameBalanceScale(game projekAkhir[], game urutanAwal[], balanceScale pemain[]){
     outputBalanceScale(pemain, projekAkhir, urutanAwal);
     displayAkhirGame();
-    clearTerminal();
+    clearTerminal(1);
 }
 
 //game ketiga
@@ -210,6 +221,7 @@ int inputJumlahTembakan(int pemain, game urutanAwal[]){
 int prosesTembakanRussianRoulette(int &chamberAktif, int posisiPeluru, int jumlahTembakan, int pemain){
     for(int i = 0; i < jumlahTembakan; i++){
         cout << "DOR" << endl;
+        delay(0.5);
 
         if(chamberAktif == posisiPeluru){
             return pemain; //buat yang kalah
@@ -217,6 +229,7 @@ int prosesTembakanRussianRoulette(int &chamberAktif, int posisiPeluru, int jumla
 
         chamberAktif = (chamberAktif + 1) % 30;
     }
+
     return -1; //ga mati
 }
 int mainGameRussianRoulette(game urutanAwal[]){
@@ -279,12 +292,12 @@ void gameRussianRoulette(game projekAkhir[], game urutanAwal[]) {
     int indexKalah = poinRussianRoulette(projekAkhir, urutanAwal, pemainKalah);
     outputRussianRoulette(projekAkhir, indexKalah);
     displayAkhirGame();
+    clearTerminal(1);
 }
 
 
 //game kelima
 int indeksHangWord(){
-    srand(time(0));
     return rand() % 100;
 }
 string masukkanJawabanHangWord(int indeks){
@@ -380,10 +393,15 @@ void gambarHangWord(int nyawa, string hint1, string hint2, string hint3, string 
             break;
     }
 }
-char inputTebakanHangWord(int pemain, game projekAkhir[]){
-    char tebakanPemain;
-    cout << "Tebakan " << projekAkhir[pemain].nama << ": ";
-    cin >> tebakanPemain;
+string inputTebakanHW(int pemain, game urutanAwal[]){
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    string tebakanPemain;
+    cout << "Tebakan " << urutanAwal[pemain].nama << ": ";
+    getline(cin, tebakanPemain);
+
+    for(int i = 0; i < tebakanPemain.length(); i++){
+        tebakanPemain[i] = tolower(tebakanPemain[i]);
+    }
     return tebakanPemain;
 }
 bool cekJawabanHangWord(char tebakanPemain, string &jawabanPemain, string jawabanHangWord){
@@ -391,10 +409,10 @@ bool cekJawabanHangWord(char tebakanPemain, string &jawabanPemain, string jawaba
     for(int i = 0; i < jawabanHangWord.length(); i++){
         if(tebakanPemain == jawabanHangWord[i]){
             jawabanPemain[i] = tebakanPemain;
-            return true;
+            foundjawaban = true;
         }
     }
-    return false;
+    return foundjawaban;
 }
 void hurufYangSudaDitebak(char tebakanPemain, int banyakTebakan, char hurufDitebak[]){
     hurufDitebak[banyakTebakan] = tebakanPemain;
@@ -449,22 +467,24 @@ void mainGameHangWord(game projekAkhir[], game urutanAwal[]){
                 continue;
             }
 
-            if (!cekJawabanHangWord(tebakanPemain, jawabanPemain, jawabanHangWord)){
+            bool jawabanPemainBenar = cekJawabanHangWord(tebakanPemain, jawabanPemain, jawabanHangWord);        
+            if (!jawabanPemainBenar){
                 nyawa--;
                 cout << endl << "Tebakan salah, sisa nyawa: " << nyawa << endl;
                 gambarHangWord(nyawa, hint1, hint2, hint3, jawabanPemain);
             } else {
                 cout << "Jawaban    : " << jawabanPemain << endl;
             }
-            clearTerminal();
         }
 
         bool menang = (jawabanPemain == jawabanHangWord);
-        poinHangWord(projekAkhir[i], menang);
+        poinHangWord(urutanAwal[i], menang);
         if(!menang){
             cout << "Kamu kalah! Kata yang harus ditebak adalah: " << jawabanHangWord << endl;
             cout << endl << endl;
         }
+        projekAkhir[i] = urutanAwal[i];
+        clearTerminal(1);
     }
 }
 void outputHangWord(game projekAkhir[]){
@@ -491,5 +511,5 @@ void gameHangWord(game projekAkhir[], game urutanAwal[]){
     mainGameHangWord(projekAkhir, urutanAwal);
     outputHangWord(projekAkhir);
     displayAkhirGame();
-    clearTerminal();
+    clearTerminal(1);
 }
